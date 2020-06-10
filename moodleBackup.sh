@@ -4,6 +4,7 @@ DATETIME=`date +%Y%m%d-%H%M`
 DIRECTORY=/mnt/moodle.bak
 DB=moodle
 SITENAME=JAM-VLE
+mdDIRECTORY=/var/moodledata
 
 showinfo(){
     echo "\n\n############################################"
@@ -43,7 +44,7 @@ dumpDB(){
 tarMD(){
     #create the mdBackup directory if missing
     mkdir -p $DIRECTORY/mdBackup
-    cd /var/
+    cd $mdDIRECTORY/..
     echo "\n##### Gathering and Compressing MoodleData directory. #####"
     if tar czf $DIRECTORY/mdBackup/$SITE-mdBackup_$DATETIME.tar.gz moodledata/; then
         echo "\n##### Successfully archived to $DIRECTORY/mdBackup/$SITENAME-mdBackup_$DATETIME.tar.gz #####"
