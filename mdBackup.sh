@@ -31,7 +31,7 @@ tarMD(){
     mkdir -p $DIRECTORY/mdBackup
     cd $mdDIRECTORY/..
     echo "\n##### Gathering and Compressing MoodleData directory. #####"
-    if tar czf $DIRECTORY/mdBackup/$SITE-mdBackup_$DATETIME.tar.gz moodledata/; then
+    if tar czf $DIRECTORY/mdBackup/$SITENAME-mdBackup_$DATETIME.tar.gz moodledata/; then
         echo "\n##### Successfully archived to $DIRECTORY/mdBackup/$SITENAME-mdBackup_$DATETIME.tar.gz #####"
         return 0
     else
