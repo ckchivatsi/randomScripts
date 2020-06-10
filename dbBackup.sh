@@ -64,6 +64,7 @@ else
     else
         echo "\n##### Backup process failed! Stopping script... #####"
         sleep 5
+    fi
 fi
 CURDATETIME=`date +%Y%m%d-%H%M`
 echo "\n########################################"

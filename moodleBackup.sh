@@ -3,8 +3,7 @@
 DATETIME=`date +%Y%m%d-%H%M`
 DIRECTORY=/mnt/moodle.bak
 DB=moodle
-#KINDLY NOTE: Include the trailling / at the end of the MD directory path below, failure to do so may cause undesired directory structure with RSYNC.  
-MD=/var/moodledata/
+SITENAME=JAM-VLE
 
 showinfo(){
     echo "\n\n############################################"
@@ -12,8 +11,8 @@ showinfo(){
     echo "############################################\n"
     echo "This script will perform the following steps to backup your Moodle database and data:"
     echo "\t- Mount a backup space at $DIRECTORY."
-    echo "\t- Perfom a mysqldump on the $DB database; with date and time as part of the file name."
-    echo "\t- Perfom RSYNC on the moodledata directory ($MD) to $DIRECTORY/mdBackup"
+    echo "\t- Perfom a mysqldump on the $DB database; append datetime stamp to file name."
+    echo "\t- Archive the moodledata directory to $DIRECTORY/mdBackup/; append datetime stamp to file name."
     echo "\t- Unmount the backup directory.\n"
 }
 
@@ -41,15 +40,16 @@ dumpDB(){
     fi
 }
 
-rsyncMD(){
+tarMD(){
     #create the mdBackup directory if missing
     mkdir -p $DIRECTORY/mdBackup
-    echo "\n##### RSYNCing MoodleData. #####"
-    if rsync -a --delete-after $MD $DIRECTORY/mdBackup; then
-        echo "\n##### $MD successfully synced to $DIRECTORY/mdBackup/ #####"
+    cd /var/
+    echo "\n##### Gathering and Compressing MoodleData directory. #####"
+    if tar czf $DIRECTORY/mdBackup/$SITE-mdBackup_$DATETIME.tar.gz moodledata/; then
+        echo "\n##### Successfully archived to $DIRECTORY/mdBackup/$SITENAME-mdBackup_$DATETIME.tar.gz #####"
         return 0
     else
-        echo "\n##### An error occured while syncing $MD to $DIRECTORY/mdBackup/ #####"
+        echo "\n##### An error occured while creating archive $SITENAME-mdBackup_$DATETIME.tar.gz #####"
         return 1
     fi
 }
@@ -71,14 +71,14 @@ if mountpoint $DIRECTORY; then
     echo "\n##### Backup space already mounted at $DIRECTORY #####"
     dumpDB
     sleep 5
-    rsyncMD
+    tarMD
     sleep 5
     umountDirectory
 else
     if mountDirectory; then
         dumpDB
         sleep 5
-        rsyncMD
+        tarMD
         sleep 5
         umountDirectory
     else
