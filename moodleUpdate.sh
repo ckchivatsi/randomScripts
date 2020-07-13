@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#This is a quick script to upgrade Moodle LMS.
+#This is a quick script to update Moodle LMS.
 #Still needs alot of work to make it interactive and also include tests to ensure it does not fail.
 #####!!!!!WARNING!!!!!#####
 #This script has some disastrous commands that may leave you crying; kindly go through it and make sure it will be doing what you expect.
@@ -9,15 +9,12 @@
 ##you can find the list of your additional plugins from Site Administration > Plugins > Plugins Overview > Additional Plugins
 #Change version numbers to your preference
 
-#Upgrade Moodle 3.8 to Moodle 3.9
+#Update Moodle 3.9 to Moodle 3.9.1
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
 mv moodle moodle.bak
 cd /opt/moodle
 git pull
-git branch --track MOODLE_39_STABLE origin/MOODLE_39_STABLE
-git checkout MOODLE_39_STABLE
-git branch -D MOODLE_38_STABLE
 cp -R /opt/moodle /var/www/html
 chmod -R 0755 /var/www/html/moodle
 cd /var/www/html
