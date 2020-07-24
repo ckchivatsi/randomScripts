@@ -4,7 +4,10 @@ DATETIME=`date +%Y%m%d-%H%M`
 DIRECTORY=/mnt/moodle.bak
 DB=moodle
 SITENAME=JAM-VLE
-mdDIRECTORY=/var/moodledata
+mdDIRECTORY=/opt/moodledata
+# $mdDIRECTORY is a cache folder of the /var/moodledata directory
+# It get updated using RSYNC before the backup process starts
+# This reduces the chance of backup failure due to files being used or updated during the archiving process
 
 showinfo(){
     echo "\n\n############################################"
