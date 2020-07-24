@@ -18,10 +18,10 @@ showinfo(){
 mountDirectory(){
     echo "\n##### Mounting backup directory. #####"
     if mount $DIRECTORY; then
-        echo "\n##### Backup space mounted at $DIRECTORY #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : Backup space mounted at $DIRECTORY #####"
         return 0
     else
-        echo "\n##### Failed to mount $DIRECTORY #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : Failed to mount $DIRECTORY #####"
         return 1
     fi
 }
@@ -32,10 +32,10 @@ tarSITE(){
     cd $siteDIRECTORY/..
     echo "\n##### Gathering and Compressing Moodle directory. #####"
     if tar czf $DIRECTORY/siteBackup/$SITENAME-siteBackup_$DATETIME.tar.gz moodle/; then
-        echo "\n##### Successfully archived to $DIRECTORY/siteBackup/$SITENAME-siteBackup_$DATETIME.tar.gz #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : Successfully archived to $DIRECTORY/siteBackup/$SITENAME-siteBackup_$DATETIME.tar.gz #####"
         return 0
     else
-        echo "\n##### An error occured while creating archive $SITENAME-siteBackup_$DATETIME.tar.gz #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : An error occured while creating archive $SITENAME-siteBackup_$DATETIME.tar.gz #####"
         return 1
     fi
 }
@@ -43,10 +43,10 @@ tarSITE(){
 umountDirectory(){
     echo "\n##### Unmounting backup directory. #####"
     if umount $DIRECTORY; then
-        echo "\n##### Backup space successfully unmounted #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : Backup space successfully unmounted #####"
         return 0
     else
-        echo "\n##### Failed to unmount $DIRECTORY #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : Failed to unmount $DIRECTORY #####"
         return 1
     fi
 }
@@ -54,7 +54,7 @@ umountDirectory(){
 #Main Program
 showinfo
 if mountpoint $DIRECTORY; then
-    echo "\n##### Backup space already mounted at $DIRECTORY #####"
+    echo "\n##### `date +%Y%m%d-%H%M` : Backup space already mounted at $DIRECTORY #####"
     tarSITE
     sleep 5
     umountDirectory
@@ -64,13 +64,13 @@ else
         sleep 5
         umountDirectory
     else
-        echo "\n##### Backup process failed! Stopping script... #####"
+        echo "\n##### `date +%Y%m%d-%H%M` : Backup process failed! Stopping script... #####"
         sleep 5
     fi
 fi
-CURDATETIME=`date +%Y%m%d-%H%M`
+
 echo "\n########################################"
-echo "##### M-backup ended $CURDATETIME #####"
+echo "##### M-backup ended `date +%Y%m%d-%H%M` #####"
 echo "########################################\n\n"
 
 
