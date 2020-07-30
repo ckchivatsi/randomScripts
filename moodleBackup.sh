@@ -40,6 +40,9 @@ dumpDB(){
         return 0
     else
         echo "\n##### `date +%Y%m%d-%H%M` : An error occured while dumping to $DIRECTORY/dbBackup/$DB-dbBackup_$DATETIME.sql #####"
+        if rm $DIRECTORY/dbBackup/$DB-dbBackup_$DATETIME.sql; then
+            echo "\n##### `date +%Y%m%d-%H%M` : $DIRECTORY/dbBackup/$DB-dbBackup_$DATETIME.sql removed #####"
+        fi
         return 1
     fi
 }
@@ -54,6 +57,9 @@ tarMD(){
         return 0
     else
         echo "\n##### `date +%Y%m%d-%H%M` : An error occured while creating archive $SITENAME-mdBackup_$DATETIME.tar.gz #####"
+        if rm $SITENAME-mdBackup_$DATETIME.tar.gz; then
+            echo "\n##### `date +%Y%m%d-%H%M` : $SITENAME-mdBackup_$DATETIME.tar.gz removed #####"
+        fi
         return 1
     fi
 }
