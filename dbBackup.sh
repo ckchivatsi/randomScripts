@@ -34,6 +34,7 @@ dumpDB(){
         return 0
     else
         echo "\n##### `date +%Y%m%d-%H%M` : An error occured while dumping to $DIRECTORY/dbBackup/$DB-dbBackup_$DATETIME.sql #####"
+        sleep 10
         if rm $DIRECTORY/dbBackup/$DB-dbBackup_$DATETIME.sql; then
             echo "\n##### `date +%Y%m%d-%H%M` : $DIRECTORY/dbBackup/$DB-dbBackup_$DATETIME.sql removed #####"
         fi

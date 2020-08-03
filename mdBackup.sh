@@ -39,6 +39,7 @@ tarMD(){
         return 0
     else
         echo "\n##### `date +%Y%m%d-%H%M` : An error occured while creating archive $SITENAME-mdBackup_$DATETIME.tar.gz #####"
+        sleep 10
         if rm $SITENAME-mdBackup_$DATETIME.tar.gz; then
             echo "\n##### `date +%Y%m%d-%H%M` : $SITENAME-mdBackup_$DATETIME.tar.gz removed #####"
         fi
