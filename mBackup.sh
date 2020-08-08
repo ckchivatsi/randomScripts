@@ -36,8 +36,8 @@ tarSITE(){
         return 0
     else
         echo "\n##### `date +%Y%m%d-%H%M` : An error occured while creating archive $SITENAME-siteBackup_$DATETIME.tar.gz #####"
-        sleep 10
-        if rm $SITENAME-siteBackup_$DATETIME.tar.gz; then
+        sleep 5
+        if rm $DIRECTORY/siteBackup/$SITENAME-siteBackup_$DATETIME.tar.gz; then
             echo "\n##### `date +%Y%m%d-%H%M` : $SITENAME-siteBackup_$DATETIME.tar.gz removed #####"
         fi
         return 1
