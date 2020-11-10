@@ -85,6 +85,8 @@ if mountpoint $DIRECTORY; then
     sleep 5
     tarMD
     sleep 5
+    echo "\n##### Calculating backup disk usage... #####"
+    echo `du -sh /mnt/moodle.bak/*`
     umountDirectory
 else
     if mountDirectory; then
@@ -92,6 +94,8 @@ else
         sleep 5
         tarMD
         sleep 5
+	echo "\n##### Calculating backup disk usage... #####"
+	echo `du -sh /mnt/moodle.bak/*`
         umountDirectory
     else
         echo "\n##### `date +%Y%m%d-%H%M` : Backup process failed! Stopping script... #####"
