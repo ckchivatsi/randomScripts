@@ -9,7 +9,7 @@
 ##you can find the list of your additional plugins from Site Administration > Plugins > Plugins Overview > Additional Plugins
 #Change version numbers to your preference
 
-#Update Moodle 3.9 to Moodle 3.9.1
+#Update Moodle 
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
 mv moodle moodle.bak
@@ -36,6 +36,8 @@ cp -pr moodle.bak/filter/wiris moodle/filter/wiris
 cp -pr moodle.bak/lib/editor/atto/plugins/wiris moodle/lib/editor/atto/plugins/wiris
 cp -pr moodle.bak/lib/editor/tinymce/plugins/tiny_mce_wiris moodle/lib/editor/tinymce/plugins/tiny_mce_wiris
 cp -pr moodle.bak/local/wirisquizzes moodle/local/wirisquizzes
+cp -pr moodle.bak/admin/tool/opcache moodle/admin/tool/opcache
+cp -pr moodle.bak/mod/hotpot/ moodle/mod/hotpot/
 ##
 chown -R root:root moodle
 chmod -R 0755 moodle
