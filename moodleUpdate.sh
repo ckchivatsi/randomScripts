@@ -40,6 +40,7 @@ cp -pr moodle.bak/admin/tool/opcache moodle/admin/tool/opcache
 cp -pr moodle.bak/mod/hotpot/ moodle/mod/hotpot/
 cp -pr moodle.bak/mod/autoattendmod/ moodle/mod/autoattendmod/
 cp -pr moodle.bak/blocks/autoattend/ moodle/blocks/autoattend/
+cp -pr moodle.bak/local/boostnavigation/ moodle/local/boostnavigation/
 ##
 chown -R root:root moodle
 chmod -R 0755 moodle

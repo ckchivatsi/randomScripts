@@ -9,15 +9,15 @@
 ##you can find the list of your additional plugins from Site Administration > Plugins > Plugins Overview > Additional Plugins
 #Change version numbers to your preference
 
-#Upgrade Moodle 3.8 to Moodle 3.9
+#Upgrade Moodle 3.9 to Moodle 3.10
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
 mv moodle moodle.bak
 cd /opt/moodle
 git pull
-git branch --track MOODLE_39_STABLE origin/MOODLE_39_STABLE
-git checkout MOODLE_39_STABLE
-git branch -D MOODLE_38_STABLE
+git branch --track MOODLE_310_STABLE origin/MOODLE_310_STABLE
+git checkout MOODLE_310_STABLE
+git branch -D MOODLE_39_STABLE
 cp -R /opt/moodle /var/www/html
 chmod -R 0755 /var/www/html/moodle
 cd /var/www/html
@@ -39,6 +39,11 @@ cp -pr moodle.bak/filter/wiris moodle/filter/wiris
 cp -pr moodle.bak/lib/editor/atto/plugins/wiris moodle/lib/editor/atto/plugins/wiris
 cp -pr moodle.bak/lib/editor/tinymce/plugins/tiny_mce_wiris moodle/lib/editor/tinymce/plugins/tiny_mce_wiris
 cp -pr moodle.bak/local/wirisquizzes moodle/local/wirisquizzes
+cp -pr moodle.bak/admin/tool/opcache moodle/admin/tool/opcache
+cp -pr moodle.bak/mod/hotpot/ moodle/mod/hotpot/
+cp -pr moodle.bak/mod/autoattendmod/ moodle/mod/autoattendmod/
+cp -pr moodle.bak/blocks/autoattend/ moodle/blocks/autoattend/
+cp -pr moodle.bak/local/boostnavigation/ moodle/local/boostnavigation/
 ##
 chown -R root:root moodle
 chmod -R 0755 moodle
