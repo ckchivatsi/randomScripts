@@ -1,0 +1,50 @@
+'Macro 1. Sort sheets alphabetically in ascending order.'
+
+Sub sortAscending()
+    Dim i, n, k As Double
+
+    'Count the number of worksheets and store the number in variable "n"
+    n = Application.Sheets.Count
+    
+    'Do the following look for each worksheet again
+    For i = 1 To n
+    
+        'Loop through all worksheets until the second last one (later you use the .move after function)
+        For k = 1 To n - 1
+            
+            'If the name is larger than the following worksheet, change the sequence of these two worksheets.
+            'In order to enable a proper comparison, change all characters to lower case (UCase = Upper case works
+            'the same way.
+            If LCase(Sheets(k).Name) > LCase(Sheets(k + 1).Name) Then Sheets(k).Move after:=Sheets(k + 1)
+        Next
+    Next
+
+End Sub
+
+
+
+
+
+
+'Macro 2. Sort sheets alphabetically in descending order.'
+
+Sub sortDescending()
+    Dim i, n, k As Double
+
+    'Count the number of worksheets and store the number in variable "n"
+    n = Application.Sheets.Count
+    
+    'Do the following loop for each worksheet again
+    For i = 1 To n
+    
+        'Loop through all worksheets until the second last one (later you use the .move after function)
+        For k = 1 To n - 1
+            
+            'If the name is smaller than the following worksheet, change the sequence of these two worksheets.
+            'In order to enable a proper comparison, change all characters to lower case (UCase = Upper case works
+            'the same way.
+            If LCase(Sheets(k).Name) < LCase(Sheets(k + 1).Name) Then Sheets(k).Move after:=Sheets(k + 1)
+        Next
+    Next
+
+End Sub
