@@ -9,15 +9,15 @@
 ##you can find the list of your additional plugins from Site Administration > Plugins > Plugins Overview > Additional Plugins
 #Change version numbers to your preference
 
-#Upgrade Moodle 3.9 to Moodle 3.10
+#Upgrade Moodle 3.11 to Moodle 4.0
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
 mv moodle moodle.bak
 cd /opt/moodle
 git pull
-git branch --track MOODLE_310_STABLE origin/MOODLE_310_STABLE
-git checkout MOODLE_310_STABLE
-git branch -D MOODLE_39_STABLE
+git branch --track MOODLE_400_STABLE origin/MOODLE_400_STABLE
+git checkout MOODLE_400_STABLE
+git branch -D MOODLE_311_STABLE
 cp -R /opt/moodle /var/www/html
 chmod -R 0755 /var/www/html/moodle
 cd /var/www/html
@@ -25,25 +25,25 @@ cp moodle.bak/config.php moodle/config.php
 #themes and mods
 cp -pr moodle.bak/theme/moove moodle/theme/moove
 cp -pr moodle.bak/mod/attendance moodle/mod/attendance
-cp -pr moodle.bak/mod/bigbluebuttonbn moodle/mod/bigbluebuttonbn
-cp -pr moodle.bak/report/extendedlog moodle/report/extendedlog
-cp -pr moodle.bak/blocks/dedication moodle/blocks/dedication
-cp -pr moodle.bak/question/type/essaywiris moodle/question/type/essaywiris
-cp -pr moodle.bak/question/type/matchwiris moodle/question/type/matchwiris
-cp -pr moodle.bak/question/type/multianswerwiris moodle/question/type/multianswerwiris
-cp -pr moodle.bak/question/type/multichoicewiris moodle/question/type/multichoicewiris
-cp -pr moodle.bak/question/type/shortanswerwiris moodle/question/type/shortanswerwiris
-cp -pr moodle.bak/question/type/truefalsewiris moodle/question/type/truefalsewiris
-cp -pr moodle.bak/question/type/wq moodle/question/type/wq
-cp -pr moodle.bak/filter/wiris moodle/filter/wiris
-cp -pr moodle.bak/lib/editor/atto/plugins/wiris moodle/lib/editor/atto/plugins/wiris
-cp -pr moodle.bak/lib/editor/tinymce/plugins/tiny_mce_wiris moodle/lib/editor/tinymce/plugins/tiny_mce_wiris
-cp -pr moodle.bak/local/wirisquizzes moodle/local/wirisquizzes
-cp -pr moodle.bak/admin/tool/opcache moodle/admin/tool/opcache
-cp -pr moodle.bak/mod/hotpot/ moodle/mod/hotpot/
-cp -pr moodle.bak/mod/autoattendmod/ moodle/mod/autoattendmod/
-cp -pr moodle.bak/blocks/autoattend/ moodle/blocks/autoattend/
-cp -pr moodle.bak/local/boostnavigation/ moodle/local/boostnavigation/
+#cp -pr moodle.bak/mod/bigbluebuttonbn moodle/mod/bigbluebuttonbn
+#cp -pr moodle.bak/report/extendedlog moodle/report/extendedlog
+#cp -pr moodle.bak/blocks/dedication moodle/blocks/dedication
+#cp -pr moodle.bak/question/type/essaywiris moodle/question/type/essaywiris
+#cp -pr moodle.bak/question/type/matchwiris moodle/question/type/matchwiris
+#cp -pr moodle.bak/question/type/multianswerwiris moodle/question/type/multianswerwiris
+#cp -pr moodle.bak/question/type/multichoicewiris moodle/question/type/multichoicewiris
+#cp -pr moodle.bak/question/type/shortanswerwiris moodle/question/type/shortanswerwiris
+#cp -pr moodle.bak/question/type/truefalsewiris moodle/question/type/truefalsewiris
+#cp -pr moodle.bak/question/type/wq moodle/question/type/wq
+#cp -pr moodle.bak/filter/wiris moodle/filter/wiris
+#cp -pr moodle.bak/lib/editor/atto/plugins/wiris moodle/lib/editor/atto/plugins/wiris
+#cp -pr moodle.bak/lib/editor/tinymce/plugins/tiny_mce_wiris moodle/lib/editor/tinymce/plugins/tiny_mce_wiris
+#cp -pr moodle.bak/local/wirisquizzes moodle/local/wirisquizzes
+#cp -pr moodle.bak/admin/tool/opcache moodle/admin/tool/opcache
+#cp -pr moodle.bak/mod/hotpot/ moodle/mod/hotpot/
+#cp -pr moodle.bak/mod/autoattendmod/ moodle/mod/autoattendmod/
+#cp -pr moodle.bak/blocks/autoattend/ moodle/blocks/autoattend/
+#cp -pr moodle.bak/local/boostnavigation/ moodle/local/boostnavigation/
 ##
 chown -R root:root moodle
 chmod -R 0755 moodle
