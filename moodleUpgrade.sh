@@ -12,6 +12,7 @@
 #Upgrade Moodle 3.11 to Moodle 4.0
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
+rm -rf moodle.bak
 mv moodle moodle.bak
 cd /opt/moodle
 git pull

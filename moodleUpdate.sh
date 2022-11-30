@@ -12,6 +12,7 @@
 #Update Moodle 
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
+rm -rf moodle.bak
 mv moodle moodle.bak
 cd /opt/moodle
 git pull
