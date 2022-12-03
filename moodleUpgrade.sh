@@ -9,16 +9,16 @@
 ##you can find the list of your additional plugins from Site Administration > Plugins > Plugins Overview > Additional Plugins
 #Change version numbers to your preference
 
-#Upgrade Moodle 3.11 to Moodle 4.0
+#Upgrade Moodle 4.0 to Moodle 4.1
 php /var/www/html/moodle/admin/cli/maintenance.php --enable
 cd /var/www/html
 rm -rf moodle.bak
 mv moodle moodle.bak
 cd /opt/moodle
 git pull
-git branch --track MOODLE_400_STABLE origin/MOODLE_400_STABLE
-git checkout MOODLE_400_STABLE
-git branch -D MOODLE_311_STABLE
+git branch --track MOODLE_401_STABLE origin/MOODLE_401_STABLE
+git checkout MOODLE_401_STABLE
+git branch -D MOODLE_400_STABLE
 cp -R /opt/moodle /var/www/html
 chmod -R 0755 /var/www/html/moodle
 cd /var/www/html
@@ -26,7 +26,7 @@ cp moodle.bak/config.php moodle/config.php
 #themes and mods
 cp -pr moodle.bak/theme/moove moodle/theme/moove
 cp -pr moodle.bak/mod/attendance moodle/mod/attendance
-#cp -pr moodle.bak/mod/bigbluebuttonbn moodle/mod/bigbluebuttonbn
+cp -pr moodle.bak/mod/bigbluebuttonbn moodle/mod/bigbluebuttonbn
 #cp -pr moodle.bak/report/extendedlog moodle/report/extendedlog
 #cp -pr moodle.bak/blocks/dedication moodle/blocks/dedication
 #cp -pr moodle.bak/question/type/essaywiris moodle/question/type/essaywiris
